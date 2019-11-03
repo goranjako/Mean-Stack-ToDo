@@ -1,0 +1,43 @@
+<div class="container s">
+    <div class="row ">
+      <div class="card hoverable rounded col-md-6 col-sm-12 m-auto  ">
+        <form [formGroup]="validationForm " (ngSubmit)="onSubmit(validationForm.value)" class="p-5 rounded">
+                <div class=" text-center">
+                        <h4 class="card-title w-100 font-weight-bold">Sign up</h4></div>
+                <div class="md-form d-flex">
+                        <i class="fa fa-user prefix"></i>
+                        <input mdbInput mdbValidate formControlName="fullName" minLength="8"  type="text" class="form-control" id="form9">
+                        <label for="form9">Type your fullName</label>
+                        <mdb-error *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">Input invalid</mdb-error>
+                        <mdb-success *ngIf="fullName.valid && (fullName.dirty || fullName.touched)">Input valid</mdb-success>
+                      </div>
+          <div class="md-form">
+            <i class="fa fa-envelope prefix"></i>
+            <input mdbInput mdbValidate formControlName="email"  type="email"
+                   class="form-control" id="form6">
+            <label for="form6">Type your e-mail</label>
+            <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">Input invalid</mdb-error>
+            <mdb-success *ngIf="email.valid && (email.dirty || email.touched)">Input valid</mdb-success>
+          </div>
+    
+          <div class="md-form">
+            <i class="fa fa-lock prefix"></i>
+            <input mdbInput mdbValidate formControlName="password" minLength="6" maxLength="25" type="password" class="form-control" id="form10">
+            <label for="form10">Type your password</label>
+            <mdb-error *ngIf="password.invalid && (password.dirty || password.touched)">Input invalid
+            </mdb-error>
+            <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">Input valid
+            </mdb-success>
+          </div>
+          <div class="text-center">
+            <button mdbBtn  outline="true" type="button"  class="button-p button2"  [disabled]="!validationForm.valid"    mdbWavesEffect type="submit">Sign up</button>
+          
+          </div>
+        </form>
+        
+  </div>  
+  </div> 
+  </div>
+  <ngx-spinner bdColor="#f5f5f5" size="medium" color="#4285F4" type="ball-spin-clockwise" >
+  <p style="font-size: 20px; color:#4285F4">Loading...</p>
+  </ngx-spinner>

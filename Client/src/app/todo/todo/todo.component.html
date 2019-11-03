@@ -1,0 +1,33 @@
+<div class="container d mt-5">
+      <div class="d-flex mt-2" *ngFor="let item of items; let i=index">
+            <mdb-card class="rounded hoverable flex-grow-1">
+                  <mdb-card-body>
+                        <div class=" flex-column">
+                              <div [ngClass]="{'completed': item.isCompleted}" (click)="completed(item)" class="font-italic text-capitalize font-weight-light text-center ml-1 ">{{item.item}}</div>
+                                    <div class="m text-center">
+                                    <i (click)="removeItem(item)" class="fas fa-trash text-primary "></i> 
+                                    </div>
+                              
+                        </div>
+                  </mdb-card-body>
+            </mdb-card>
+      </div>
+</div>   
+
+<div class="container  fixed-bottom bg-white">
+      <form [formGroup]="todoForm " (ngSubmit)="onSubmit(todoForm.value)" class=" container ">
+
+            <div class="md-form ">
+                  <i class="fa fa-tasks prefix font-weight-bold text-primary" aria-hidden="true"></i>
+                  <input mdbInput mdbValidate formControlName="item" type="text" class="form-control" id="form1">
+
+                  <label for="form1" class="font-italic">What needs to be done</label>
+                  <mdb-error *ngIf="item.invalid && (item.dirty || item.touched)">Input invalid</mdb-error>
+                  <mdb-success *ngIf="item.valid && (item.dirty || item.touched)">Input valid</mdb-success>
+            </div>
+            <div class="text-right mt-0">
+                  <button mdbBtn type="button" class="button2 font-italic bg-white" [disabled]="!todoForm.valid"
+                        mdbWavesEffect type="submit">Add</button>
+            </div>
+      </form>
+</div>
